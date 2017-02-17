@@ -985,12 +985,12 @@ var Room = {
 				Notifications.notify(Room,_('{0} always sees beauty in things that others might not notice.',Engine.x_name));
 				break;
 			case "*O":
-				Notifications.notify(Room,_('{0} see the forest, the river, and a beautiful sunset on the painting, but is not moved by it.',Engine.x_name));
+				Notifications.notify(Room,_('{0} sees the forest, the river, and a beautiful sunset on the painting, but is not moved by it.',Engine.x_name));
 				Notifications.notify(Room,_('{0} does not have a very good imagination to imagine the new world with lots of details.',Engine.x_name));
 				break;
 			case "=O":
 				Notifications.notify(Room,_('{0} can see the forest, the river, and a beautiful sunset on the painting.',Engine.x_name));
-				Notifications.notify(Room,_('{0} has normal imagination, so sometimes gets immersed in the painting.',Engine.x_name));
+				Notifications.notify(Room,_('{0} has normal imagination, so {0} sometimes gets immersed in the painting.',Engine.x_name));
 				Notifications.notify(Room,_('{0} does not have strong feelings on the beauty of nature and art, but also does not feel repugnance.',Engine.x_name));
 				break;
 			default:

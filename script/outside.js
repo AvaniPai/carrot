@@ -266,7 +266,7 @@ var Outside = {
  			case "*E":
  				Notifications.notify(Outside,_('{0} does not have a strong assertive personality.',Engine.x_name));
 				Notifications.notify(Outside,_('{0} holds back own ideas, and always waits to be influenced by the others.', Engine.x_name));
-				Notifications.notify(Outside,_('After sometime of hesitating, {0} finally decides to go on an exploration trip.',Engine.x_name));
+				Notifications.notify(Outside,_('After some time of hesitating, {0} finally decides to go on an exploration trip.',Engine.x_name));
  				break;
  			case "=E":
  				Notifications.notify(Outside,_('{0} sometimes is assertive and sometimes is not.',Engine.x_name));
@@ -373,7 +373,7 @@ var Outside = {
 				break;
 			case "*O":
 				Notifications.notify(Outside,_('{0} does not feel excited about entering the town.',Engine.x_name));
-				Notifications.notify(Outside,_('{0} does not like new adventure in general.',Engine.x_name));
+				Notifications.notify(Outside,_('{0} does not like new adventures in general.',Engine.x_name));
 				break;
 			case "=O":
 				Notifications.notify(Outside,_('{0} feels okay about entering the town.',Engine.x_name));
