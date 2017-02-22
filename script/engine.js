@@ -210,7 +210,7 @@
 			$.Dispatch('stateUpdate').subscribe(Engine.handleStateUpdates);
 
 			$SM.init();
-			$SM.setTraitsAndMatch(ocean);
+			//$SM.setTraitsAndMatch(ocean);
 			Notifications.init();
 			Events.init();
 			Room.init();
@@ -833,95 +833,28 @@
 
 		loadQuiz: function(){
 
-			
-
-			var oq = ['OI see myself as someone who is inventive.', 
-					'OI see myself as someone who is original, comes up with new ideas.', 
-					'OI see myself as someone who values artistic, aesthetic experiences.',
-					'OI see myself as someone who is curious about many different things.', 
-					'OI see myself as someone who is ingenious, a deep thinker.',  
-					'OI see myself as someone who likes to reflect, play with ideas.', 
-					'OI see myself as someone who has an active imagination.',  
-					'OI see myself as someone who is sophisticated in art, music, or literature.', 
-					'*OI see myself as someone who prefers work that is routine.', 
-					'*OI see myself as someone who has few artistic interests.'];
-			var cq = ['CI see myself as someone who does a thorough job.', 
-					'CI see myself as someone who perseveres until the task is finished.', 
-					'CI see myself as someone who does things efficiently.', 
-					'CI see myself as someone who is a reliable worker.', 
-					'CI see myself as someone who makes plans and follows through with them.', 
-					'*CI see myself as someone who tends to be disorganized.', 
-					'*CI see myself as someone who is easily distracted.', 
-					'*CI see myself as someone who tends to be lazy.', 
-					'*CI see myself as someone who can be somewhat careless.'];
-			var eq = ['EI see myself as someone who is talkative.',
-					'EI see myself as someone who has an assertive personality.',
-					'EI see myself as someone who is full of energy.',
-					'EI see myself as someone who is outgoing, sociable.',
-					'EI see myself as someone who generates a lot of enthusiasm.',
-					'*EI see myself as someone who tends to be quiet.', 
-					'*EI see myself as someone who is reserved.',
-					'*EI see myself as someone who is sometimes shy, inhibited.'];
-			var aq = ['AI see myself as someone who is helpful and unselfish with others.', 
-					'AI see myself as someone who is considerate and kind to almost everyone.', 
-					'AI see myself as someone who has a forgiving nature.', 
-					'AI see myself as someone who likes to cooperate with others.', 
-					'AI see myself as someone who is generally trusting.', 
-					'*AI see myself as someone who tends to find fault with others.', 
-					'*AI see myself as someone who can be cold and aloof.', 
-					'*AI see myself as someone who starts quarrels with others.', 
-					'*AI see myself as someone who is sometimes rude to others.'];
-			var nq = ['NI see myself as someone who is depressed, blue.', 
-					'NI see myself as someone who can be moody.', 
-					'NI see myself as someone who can be tense.', 
-					'NI see myself as someone who gets nervous easily.', 
-					'NI see myself as someone who worries a lot.', 
-					'*NI see myself as someone who is relaxed, handles stress well.', 
-					'*NI see myself as someone who remains calm in tense situations.', 
-					'*NI see myself as someone who is emotionally stable, not easily upset.'];
-			var xq = ['XI would prefer complex to simple problems.',
-					'XI like to have the responsibility of handling a situation that requires a lot of thinking.',
-					'XThinking is not my idea of fun.',
-					'XI would rather do something that requires little thought than something that is sure to challenge my thinking abilities.',
-					'XI try to anticipate and avoid situations where there is likely a chance I will have to think in depth about something.',
-					'XI find satisfaction in deliberating hard and for long hours.',
-					'XI only think as hard as I have to.',
-					'XI prefer to think about small, daily projects to long-term ones.',
-					'XI like tasks that require little thought once I’ve learned them.',
-					'XThe idea of relying on thought to make my way to the top appeals to me.',
-					'XI really enjoy a task that involves coming up with new solutions to problems.',
-					'XLearning new ways to think doesn’t excite me very much.',
-					'XI prefer my life to be filled with puzzles that I must solve.',
-					'XThe notion of thinking abstractly is appealing to me.',
-					'XI would prefer a task that is intellectual, difficult, and important to one that is somewhat important but does not require much thought.',
-					'XI feel relief rather than satisfaction after completing a task that required a lot of mental effort.',
-					'XIt’s enough for me that something gets the job done; I don’t care how or why it works.',
-					'XI usually end up deliberating about issues even when they do not affect me personally.',
-					'XI can always manage to solve difficult problems if I try hard enough.',
-					'XIf someone opposes me, I can find the means and ways to get what I want.',
-					'XIt is easy for me to stick to my aims and accomplish my goals.',
-					'XI am confident that I could deal efficiently with unexpected events.',
-					'XThanks to my resourcefulness, I know how to handle unforeseen situations.',
-					'XI can solve most problems if I invest the necessary effort.',
-					'XI can remain calm when facing difficulties because I can rely on my coping abilities.',
-					'XWhen I am confronted with a problem, I can usually find several solutions.',
-					'XIf I am in trouble, I can usually think of a solution.',
-					'XI can usually handle whatever comes my way.',
-					'XIn uncertain times, I usually expect the best.',
-					'XI always look on the bright side of things.',
-					'XI’m always optimistic about my future.',
-					'XWhen I undertake something new, I expect to succeed.',
-					'XWhere there’s a will, there’s a way.',
-					'XIn general, things turn out alright in the end.', 
-					'XIt is best not to get your hopes too high since you will probably be disappointed.',
-					'XRarely do I expect good things to happen.',
-					'XIf something can go wrong for me, it will.',
-					'XI hardly ever expect things to go my way.',
-					'XThings never work out the way I want them to.',
-					'XIf I make a decision on my own, I can pretty much count on the fact that it will turn out to be a poor one.',
-					'XI rarely count on good things happening to me.',
-					'XBetter to expect defeat then it doesn’t hit so hard when it comes.']
-			var reg = oq.concat(cq.concat(eq.concat(aq.concat(nq.concat(xq)))));
+			var reg = ['I see myself as someone who has an active imagination.',
+					   'I see myself as someone who has few artistic interests.',
+						'I see myself as someone who does a thorough job.',
+						'I see myself as someone who tends to be lazy.',
+						'I see myself as someone who is outgoing, sociable.',
+						'I see myself as someone who is reserved.',
+						'I see myself as someone who is generally trusting.',
+						'I see myself as someone who tends to find fault with others.',
+						'I see myself as someone who gets nervous easily.',
+						'I see myself as someone who is relaxed, handles stress well.',
+						'I would prefer complex to simple problems.',
+						'I like to have the responsibility of handling a situation that requires a lot of thinking.',
+						'I prefer to think about small, daily projects to long-term ones.',
+						'It’s enough for me that something gets the job done; I don’t care how or why it works.',
+						'I can always manage to solve difficult problems if I try hard enough.',
+						'I am confident that I could deal efficiently with unexpected events.',
+						'I can solve most problems if I invest the necessary effort.',
+						'I can remain calm when facing difficulties because I can rely on my coping abilities.',
+						'I always look on the bright side of things.',
+						'I’m always optimistic about my future.',
+						'I hardly ever expect things to go my way.',
+						'I rarely count on good things happening to me.'];
 
 			var form = $('<form>')
 				.attr('id','fm')
@@ -932,9 +865,6 @@
 			$('<p>')
 				.text("Department of Advertising and Department of Psychology has initiated a longitude personality data collection in order to establish a panel database for further research projects. All the data will be kept anonymous, and will not be counted as your course performance.")
 				.appendTo('#fm');
-			/*$('<p>')
-				.text("I see myself as someone who:")
-				.appendTo('#fm');*/
 			var ol = $('<ol>')
 				.attr('id','quiz')
 				.appendTo(form);
@@ -944,40 +874,11 @@
 			while(reg.length){
 				var pos = Math.floor((Math.random()*reg.length));
 				count+=1;
-				//2d array for q order, response
-				var rev = reg[pos][0] === '*'; //legal?
-				if(rev) reg[pos] = reg[pos].slice(1,reg[pos].length);
-				var type = reg[pos][0];
-				reg[pos] = reg[pos].slice(1,reg[pos].length);
 				var id = 'q'+count.toString()
 
-				var sdVal = '';
-				var dVal = '';
-				var naVal = type+'3';
-				var aVal = '';
-				var saVal = '';
-				
-				if(rev && type != 'X'){
-					sdVal = type+'5';
-					dVal = type+'4';
-					aVal = type+'2';
-					saVal = type+'1';
-				} else if(!rev && type != 'X') {
-					sdVal = type+'1';
-					dVal = type+'2';
-					aVal = type+'4';
-					saVal = type+'5';
-				} else {
-					sdVal = type+'0';
-					dVal = type+'0';
-					naVal = type+'0';
-					aVal = type+'0';
-					saVal = type+'0';
-				}
 				
 				$('<li>')
 					.addClass('question')
-					.addClass(type)
 					.attr('id',id)
 					.text(reg[pos])
 					.appendTo(ol);
@@ -995,7 +896,6 @@
 					.attr('type','radio')
 					.attr('name',id)
 					.attr('id','sd'+id)
-					.attr('value',sdVal)
 					.appendTo(sdWrap);
 				var dWrap = $('<div>')
 					.addClass('wrap')
@@ -1008,7 +908,6 @@
 					.attr('type','radio')
 					.attr('name',id)
 					.attr('id','d'+id)
-					.attr('value',dVal)
 					.appendTo(dWrap);
 				var naWrap = $('<div>')
 					.addClass('wrap')
@@ -1021,7 +920,6 @@
 					.attr('type','radio')
 					.attr('name',id)
 					.attr('id','na'+id)
-					.attr('value',naVal)
 					.appendTo(naWrap);
 				var aWrap = $('<div>')
 					.addClass('wrap')
@@ -1034,7 +932,6 @@
 					.attr('type','radio')
 					.attr('name',id)
 					.attr('id','a'+id)
-					.attr('value',aVal)
 					.appendTo(aWrap);
 				var saWrap = $('<div>')
 					.addClass('wrap')
@@ -1047,10 +944,8 @@
 					.attr('type','radio')
 					.attr('name',id)
 					.attr('id','sa'+id)
-					.attr('value',saVal)
 					.appendTo(saWrap);
 
-				
 				reg.splice(pos,1);
 				
 			}
@@ -1059,7 +954,7 @@
 				.appendTo(form);
 			$('<input>')
 				.attr('type','button')
-				.attr('onclick','Engine.score()')
+				.attr('onclick','Engine.pause()')
 				.attr('value','Submit')
 				.appendTo(form);
 
@@ -1067,19 +962,21 @@
 	
 		pause: async function(ocean) {
 
-				function sleep(ms){
-					return new Promise(resolve => setTimeout(resolve,ms));
-				}
+			$('#fm').remove();
 
-				var people = 'Oakley, Azariah, Landry, Skyler, Armani, Taylor, Briar, Lennon, Alex, Casey, Emory, Milan, Eden, Bodhi, Frankie, Dakota, Finley, Drew, Hayden'.split(",");
-				Engine.x_name = people[Math.floor(Math.random() * people.length)];
+			function sleep(ms){
+				return new Promise(resolve => setTimeout(resolve,ms));
+			}
 
-				$('<p>')
-					.attr('id','title')
-					.addClass('persText')
-					.text('Welcome to A Dark Room')
-					.prependTo('#wrapper');
-				if(Engine.cond[1] == 'A'){
+			var people = 'Oakley, Azariah, Landry, Skyler, Armani, Taylor, Briar, Lennon, Alex, Casey, Emory, Milan, Eden, Bodhi, Frankie, Dakota, Finley, Drew, Hayden'.split(",");
+			Engine.x_name = people[Math.floor(Math.random() * people.length)];
+
+			$('<p>')
+				.attr('id','title')
+				.addClass('persText')
+				.text('Welcome to A Dark Room')
+				.prependTo('#wrapper');
+			if(Engine.cond[1] == 'A'){
 					switch(Engine.cond[0]){
 						case '1':
 							$('<p>')
@@ -1097,12 +994,16 @@
 					$('<p>')
 						.text(_('This is a story about {0}\'s strange experiences in a new world.',Engine.x_name))
 						.appendTo('#title');
-				}
-
-
-				await sleep(5000);
-				$('#title').remove();
-				Engine.completeInit(Engine.res);
+			}
+			$('<p>')
+				.text('This game is called \“A dark room\”. It is a new production from a Swedish indie game company BJÖRN. The game company has a good reputation in industry, and have a focus on adventure game. The former works of this company includes: Firewatch, Wailing Heights, the Eyes of Ara, The Kunci Experiment, etc. This experiment is a small scale beta test for this game. The game is still developing, so an excerpt of game narrative is being test in this study. The storyline is about a virtual character’s adventure in a brand new world, without any clues about what is happening. The character starts to explore the world from the very beginning, and will gradually find out what the new world is like.')
+				.appendTo('#title');
+			await sleep(5000);
+			$('<input>')
+				.attr('type','button')
+				.attr('onclick','Engine.ready()')
+				.attr('value','Start')
+				.appendTo('#title');
 				
 		},
 
@@ -1111,97 +1012,7 @@
 				Engine.completeInit(Engine.res);
 				
 		},
-			
-		score: function(){
-			//clear is pure, * is anti, half chance of flipping their received config. 
-			//pure is assigned on whether they score > mean on a trait
-			//star is assigned on whether they score < mean on a trait
-			function attribute(scores, letter){
-				//console.log(_("scores {0}, letter {1}", scores, letter));
-				//console.log(scores[0]+scores[1]);
-				switch(letter){
-					case "O":
-						if(scores.reduce(sum) > 30) return letter;
-						else if ( scores.reduce(sum) < 30) return '*'+letter;
-						return '='+letter;
-						break;
-					case "E":
-						if(scores.reduce(sum) > 24) return letter;
-						else if ( scores.reduce(sum) < 24) return '*'+letter;
-						return '='+letter;
-						break;
-					case "X":
-						break;
-					default:
-						if(scores.reduce(sum) > 27) return letter;
-						else if ( scores.reduce(sum) < 27) return '*'+letter;
-						return '='+letter;
-						break;
-				}
-			}
 
-			function sum(total,num){
-				return total + num;
-			}
-
-			var O = [];
-			var C = [];
-			var E = [];
-			var A = [];
-			var N = [];
-			var x = [];
-			for(var i=1; i<86; i++){
-				var data = $('input[name=q'+i.toString()+']:checked').val();
-				//update double array
-				//console.log(data);
-				switch(data[0]){
-					case 'O':
-						O.push(Number(data[1]));
-						break;
-					case 'C':
-						C.push(Number(data[1]));
-						break;
-					case 'E':
-						E.push(Number(data[1]));
-						break;
-					case 'A':
-						A.push(Number(data[1]));
-						break;
-					case 'N':
-						N.push(Number(data[1]));
-						break;
-					default:
-						//console.log(_('x! {0}',data));
-						x.push(data);
-						break;
-				}
-			}
-			var ocean = [];
-			ocean.push(attribute(O,'O'));
-			ocean.push(attribute(C,'C'));
-			ocean.push(attribute(E,'E'));
-			ocean.push(attribute(A,'A'));
-			ocean.push(attribute(N,'N'));
-
-			Engine.res = ocean;
-			console.log(Engine.res);
-			if(Engine.flipped == true) {
-					for(var i=0; i<Engine.res.length; i++){
-						if(Engine.res[i][0] === '*') Engine.res[i] = Engine.res[i][1];
-						else if(Engine.res[i][0] === '='){
-							if(Math.random() < 0.5) Engine.res[i] = '*'+Engine.res[i][1];
-							else { Engine.res[i] = Engine.res[i][1];}
-						}
-						else{ Engine.res[i] = '*'+Engine.res[i]; }
-					}
-				}
-			console.log(Engine.res);
-			Engine.pause(ocean);
-			$('#fm')
-				.remove();
-
-			
-		},
 		condOne: function(){
 			Engine.cond ='1';
 			console.log(Boolean(Engine.flipped));
@@ -1342,9 +1153,7 @@
 				.attr('href','https://mediaillinois.co1.qualtrics.com/SE/?SID=SV_37r3We8C1VpeZSZ')
 				.text("Click here!")
 				.appendTo('#survey');
-			
-		},
-
+		}
 	};
 
 	function eventNullifier(e) {

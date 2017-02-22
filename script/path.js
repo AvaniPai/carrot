@@ -58,7 +58,7 @@ var Path = {
 			width: '80px'
 		}).appendTo('div#pathPanel');
 		
-		/*new Button.Button({
+		new Button.Button({
 			id: 'introButton',
 			text: _("make an introduction"),
 			click: Path.intro,
@@ -92,7 +92,7 @@ var Path = {
 			text: _("say goodbye"),
 			click: Path.goodBye,
 			width: '80px'
-		}).appendTo('div#pathPanel');*/
+		}).appendTo('div#pathPanel');
 
 		
 		Notifications.notify(Path,_('There seems to be someone walking on the street not far away.'));
@@ -103,7 +103,7 @@ var Path = {
 		Path.outfit = $SM.get('outfit');
 		
 		Engine.updateSlider();
-		//Path.updateButtons();
+		Path.updateButtons();
 		//subscribe to stateUpdates
 		$.Dispatch('stateUpdate').subscribe(Path.handleStateUpdates);
 	},

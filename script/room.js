@@ -643,23 +643,11 @@ var Room = {
 		if($SM.get('game.builder.level') == 1 && $SM.get('stores.wood', true) < 0) {
 			Engine.setTimeout(Room.unlockForest, Room._NEED_WOOD_DELAY);
 		}*/
-		Notifications.notify(Room,_("It's midnight"));
 		Notifications.notify(Room,_("{0} wakes up in a dark room.", Engine.x_name));
-		Notifications.notify(Room, _("the room is {0}. {1} is curled up on the ground", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text, Engine.x_name));
-		Notifications.notify(Room,_("{0} knows nothing about the world",Engine.x_name));
-		switch(Engine.res[4]){
-			case "N":
-				Notifications.notify(Room,_('{0} gets really upset. {0}\'s mood is very unstable, going up and down easily',Engine.x_name));
-				break;
-			case "*N":
-				Notifications.notify(Room,_('Yet {0} keeps it under control.',Engine.x_name));
-				break;
-			case "=N":
-				Notifications.notify(Room,_('{0} gets upset a little bit, but can still keep the emotions under control',Engine.x_name));
-				break;
-			default:
-				break;
-		}
+		Notifications.notify(Room,_("{0} can hardly remember what happened before",Engine.x_name));
+		Notifications.notify(Room,_("It's midnight"));
+		
+		Notifications.notify(Room, _("The room is {0}. {1} is curled up on the ground", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text, Engine.x_name));
 	},
 	
 	options: {}, // Nothing for now
@@ -671,15 +659,6 @@ var Room = {
 			Notifications.notify(Room, _("the room is {0}", Room.TempEnum.fromInt($SM.get('game.temperature.value')).text));
 			Room.changed = false;
 		}
-		/*if($SM.get('game.builder.level') == 3) {
-			$SM.add('game.builder.level', 1);
-			$SM.setIncome('builder', {
-				delay: 10,
-				stores: {'wood' : 2 }
-			});
-			Room.updateIncomeView();
-			//Notifications.notify(Room, _("the stranger is standing by the fire. she says she can help. says she builds things."));
-		}*/
 
 		Engine.moveStoresView(null, transition_diff);
 	},
@@ -827,27 +806,13 @@ var Room = {
 			Room.changed = true;
 		}
 		Notifications.notify(Room, _("the fire is {0}", Room.FireEnum.fromInt($SM.get('game.fire.value')).text), true);
-		/*if($SM.get('game.fire.value') > 1 && $SM.get('game.builder.level') < 0) {
-			$SM.set('game.builder.level', 0);
-			Notifications.notify(Room, _("the light from the fire spills from the windows, out into the dark"));
-			Engine.setTimeout(Room.updateBuilderState, Room._BUILDER_STATE_DELAY);
-		}*/	
+
 		if($SM.get('game.temperature.value') == 3){
 			Notifications.notify(Room,_('{0} feels warm now. {0} begins to look around the environment',Engine.x_name));
 			var look = $('#lookButton.button');
 			look.show();
 
 		}
-		/*if($SM.get('game.temperature.value') == 4 && Room._FIRST_HOT == 1){
-			Notifications.notify(Room,_("{0} now starts to look around the room.",Engine.x_name),true);
-			Notifications.notify(Room,_("The room is empty."),true);
-			Notifications.notify(Room,_("The night was long. The time passed slowly."),true);
-			Notifications.notify(Room,_("{0} decides to explore the world in the morning.",Engine.x_name),true);
-			Notifications.notify(Room,_("{0} has lots of leisure time to spend during the night.",Engine.x_name),true);
-			//set up kill time
-			Room.enableKillTime();
-			Room._FIRST_HOT+=1;
-		}*/
 		window.clearTimeout(Room._fireTimer);
 		Room._fireTimer = Engine.setTimeout(Room.coolFire, Room._FIRE_COOL_DELAY);
 		Room.updateButton();
@@ -943,14 +908,14 @@ var Room = {
 	},
 
 	walkCorner: function(){
-		Notifications.notify(Room,_("{0} removes the suede cover and finds underneath are a middle-scale oil painting, a scroll of parchment, an old thick notebook. ",Engine.x_name));
+		Notifications.notify(Room,_("{0} removes the suede cover and finds underneath are a middle-scale oil painting, a scroll of parchment, an old thick notebook.",Engine.x_name));
 		Notifications.notify(Room,_("There are also some ropes, a compass, a pile of hay and some other stuff."));
 		Room._baseTimer = Engine.setTimeout(Room.enableButton.bind(null,"paintingButton"),2*1000);
 		
 	},
 
 	pickupPainting: function(){
-		Notifications.notify(Room,_("The painting seems to be a view of the unknown world, but it is covered with thick dust and cannot be seen very clearly."));
+		Notifications.notify(Room,_("The painting seems to be of a beautiful view. But it is covered with thick dust and cannot be seen very clearly."));
 		
 		
 		var dust = $('#blowDustButton.button');
@@ -977,24 +942,14 @@ var Room = {
 	},
 
 	blowDust: function(){
-		switch(Engine.res[0]){
-			case "O":
-				Notifications.notify(Room, _("{0} sees the forest, the river, and a beautiful sunset on the painting.",Engine.x_name));
-				Notifications.notify(Room,_('{0} imagines how the new world becomes vivid with lots of details.',Engine.x_name));
-				Notifications.notify(Room, _('{0} enjoys the beauty of the art and the beauty of nature.',Engine.x_name));
-				Notifications.notify(Room,_('{0} always sees beauty in things that others might not notice.',Engine.x_name));
-				break;
-			case "*O":
-				Notifications.notify(Room,_('{0} sees the forest, the river, and a beautiful sunset on the painting, but is not moved by it.',Engine.x_name));
-				Notifications.notify(Room,_('{0} does not have a very good imagination to imagine the new world with lots of details.',Engine.x_name));
-				break;
-			case "=O":
-				Notifications.notify(Room,_('{0} can see the forest, the river, and a beautiful sunset on the painting.',Engine.x_name));
-				Notifications.notify(Room,_('{0} has normal imagination, so {0} sometimes gets immersed in the painting.',Engine.x_name));
-				Notifications.notify(Room,_('{0} does not have strong feelings on the beauty of nature and art, but also does not feel repugnance.',Engine.x_name));
-				break;
-			default:
-				break;
+		//match means !flipped
+		Notifications.notify(Room, _("{0} can see the forest, the river, and a beautiful sunset. It is magnificent and peaceful.",Engine.x_name));
+		if(!Engine.flipped){
+				Notifications.notify(Room,_('{0} imagines vividly how it would be like to live in a place like this with some loved one.',Engine.x_name));
+				Notifications.notify(Room, _('{0} knows that it is not possible to be true one day. Some of {0}’s aspirations tend to be pretty unrealistic.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} doesn’t bother to imagine how it would be like to live in a place like this with some loved one',Engine.x_name));
+				Notifications.notify(Room,_('{0} knows that it is not likely to be true one day. {0} never has any unrealistic aspirations.',Engine.x_name));
 		}
 		var blow = $('#blowDustButton.button');
 		blow.hide();
@@ -1004,66 +959,55 @@ var Room = {
 	studySymbols: function(){
 		var study = $('#studyButton.button');
 		study.hide();
-		switch(Engine.res[0]){
-			case "O":
-				Notifications.notify(Room,_('{0} loves difficult and challenging materials, so {0} begins to scrutinize the symbols',Engine.x_name));
-				Notifications.notify(Room,_('{0} is full of ideas, and is quick in understanding, so {0} soon finds something interesting from the symbols',Engine.x_name));
-				break;
-			case "*O":
-				Notifications.notify(Room,_('After a very short time, {0} gives up studying the symbols',Engine.x_name));
-				Notifications.notify(Room,_('{0} doesn’t like those abstract ideas at all, and never understand why things need to be this complex.',Engine.x_name));
-				Notifications.notify(Room,_('{0} likes simple and straightforward materials.',Engine.x_name));
-				break;
-			case "=0":
-				Notifications.notify(Room,_('After trying for some time, {0} gives up studying the symbols',Engine.x_name));
-				Notifications.notify(Room,_('{0} does not try to avoid all the complex problems, but {0} also does not also have strongs interest in it.',Engine.x_name));
-				break;
-			default:
-				break;
+		Notifications.notify(Room,_('There seems to be some suggestions from other people, and some unproved guesses on the edge of parchment.'));
+		if(!Engine.flipped){
+				Notifications.notify(Room,_('However, {0} does not want to follow their threads of thinking at the beginning.',Engine.x_name));
+				Notifications.notify(Room,_('{0} wants to be an independent thinker, and does not accept others\' statements without satisfactory proof.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} is so glad that there are other people’s instructions.',Engine.x_name));
+				Notifications.notify(Room,_('{0} does not wish to be an independent thinker, and will happily accept others\' unproved statements if it can save the job for {0} to figure things out by themselves.',Engine.x_name));
 		}
 	},
 
 	readDiary: function(){
-		Notifications.notify(Room,_('The diary describes the traveler’s family story. It narrates some emotional struggles.'));
-		switch(Engine.res[3]){
-			case "A":
-				Notifications.notify(Room,_('{0} is not really interested in the traveler’s problems, and is indifferent to the traveler’s feeling.',Engine.x_name));
-				Notifications.notify(Room,_('{0} normally takes no time for others.',Engine.x_name));
-				break;
-			case "*A":
-				Notifications.notify(Room,_('{0} loves the traveler’s child.',Engine.x_name));
-				Notifications.notify(Room,_('{0} sympathizes with the traveler’s feelings.',Engine.x_name));
-				Notifications.notify(Room,_('{0} really wants to comfort the traveler and offers help to solve the problems.',Engine.x_name));
-				Notifications.notify(Room,_('{0} likes to do things for others.',Engine.x_name));
-				break;
-			case "=A":
-				Notifications.notify(Room,_('{0} can feel a little emotional, but is also not interested in other people’s problems.',Engine.x_name));
-				break;
-			default:
-				break;
+		Notifications.notify(Room,_('The diary describes how the traveler strive to get people admit all the great achievement of adventure and expedition.'));
+		Notifications.notify(Room,_('It also narrates some related emotional struggles and family issues.'));
+		if(!Engine.flipped){
+				Notifications.notify(Room,_('{0} understands that very much.',Engine.x_name));
+				Notifications.notify(Room,_('{0} also has a great need to be liked and admired by other people.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} doesn’t understand that.',Engine.x_name));
+				Notifications.notify(Room,_('{0} doesn’t have a great need to be liked or admired by other people.',Engine.x_name));
 		}
 		var diary = $('#diaryButton.button');
 		diary.hide();
-		//add timer here?
+		//add new timer first
+		Room._baseTimer = Engine.setTimeout(Room.diaryInfo,3*1000);
+		
+	},
+
+	diaryInfo: function(){
+		window.clearTimeout(Engine._baseTimer);
+		Notifications.notify(Room,_('Based on the diary entries, it seems that the travelers leave this diary to other people who might also stay in this cabin.'));
+		Notifications.notify(Room,_('{0} knows a lot of details the traveler from the diary. {0} feels close to the traveler.',Engine.x_name));
+		if(!Engine.flipped){
+			Notifications.notify(Room,_('However, {0} will not write a very high self-disclosure diary and leave it somewhere for other people to read.',Engine.x_name));
+			Notifications.notify(Room,_('{0} has found it unwise to be too frank in revealing self to others.',Engine.x_name));
+		} else {
+			Notifications.notify(Room,_('If given a chance, {0} might also happily write a very high self-disclosure diary and leave it somewhere for other people to read.',Engine.x_name));
+			Notifications.notify(Room,_('{0} doesn’t have found it unwise to be very frank in revealing self to others.',Engine.x_name));
+		}
 		Room._baseTimer = Engine.setTimeout(Room.enableButton.bind(null,'scary'),5*1000);
 	},
+
 	scary: function(){
 		Notifications.notify(Room,_("Suddenly, {0} heard some cracking sounds outside the window.",Engine.x_name));
-		switch(Engine.res[4]){
-			case "N":
-				Notifications.notify(Room,_('{0} feel threatened and starts to panic.',Engine.x_name));
-				Notifications.notify(Room,_('But {0} still decides to examine what happened.',Engine.x_name));
-				break;
-			case "*N":
-				Notifications.notify(Room,_('{0} stays calm.',Engine.x_name));
-				Notifications.notify(Room,_('But {0} still decides to examine what happened.',Engine.x_name));
-				break;
-			case "=N":
-				Notifications.notify(Room,_('{0} is little concerned, but still stays calm.',Engine.x_name));
-				Notifications.notify(Room,_('But {0} still decides to examine what happened.',Engine.x_name));
-				break;
-			default:
-				break;
+		if(!Engine.flipped){
+				Notifications.notify(Room,_('{0} becomes vigilant, so {0} decides to examine what has happened.',Engine.x_name));
+				Notifications.notify(Room,_('Security is one of {0}\'s major goals in life.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} doesn’t care about it that much, but still decides to examine what has happened.',Engine.x_name));
+				Notifications.notify(Room,_('Security does not matter that much for {0}.',Engine.x_name));
 		}
 		var moveWin = $('#windowButton.button');
 		moveWin.show();
@@ -1071,21 +1015,13 @@ var Room = {
 
 	moveWindow: function(){
 		Notifications.notify(Room,_('{0} carefully moves toward the window',Engine.x_name));
-		switch(Engine.res[4]){
-			case "N":
-				Notifications.notify(Room,_('{0} finds some branches that are on the ground in the snow.',Engine.x_name));
-				Notifications.notify(Room,_('{0} worries a lot, and guesses that the sounds were from some fierce beasts or even someone else.',Engine.x_name));
-				break;
-			case "*N":
-				Notifications.notify(Room,_('{0} finds some branches that are on the ground in the snow.',Engine.x_name));
-				Notifications.notify(Room,_('{0} guesses that the sounds were from the branches which probably fell because of wind. {0} is not bothered by it.',Engine.x_name));
-				break;
-			case "=N":
-				Notifications.notify(Room,_('{0} finds some branches that are on the ground in the snow.',Engine.x_name));
-				Notifications.notify(Room,_('{0} still feels afraid a little bit, but tries to believe that the sounds and the fallen branches were only because of the wind, so {0} is not very worried.',Engine.x_name));
-				break;
-			default:
-				break;		
+		Notifications.notify(Room,_('{0} finds some branches that are on the ground in the snow.',Engine.x_name));
+		if(!Engine.flipped){	
+				Notifications.notify(Room,_('{0} has no idea what happened.',Engine.x_name));
+				Notifications.notify(Room,_('Disciplined and self-controlled outside, {0} is actually worrisome and insecure inside.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} doesn’t pay much attention on it.',Engine.x_name));
+				Notifications.notify(Room,_('{0} has never been worrisome and insecure inside at any point.',Engine.x_name));		
 		}
 		var mw = $('#windowButton.button');
 		var sit = $('#sitButton.button');
@@ -1095,30 +1031,34 @@ var Room = {
 
 	sitBack: function(){
 		Notifications.notify(Room,_('The night is long, and the wind blows strongly.'));
-		Notifications.notify(Room,_('There is no one around, and nothing else to do.'));
-		switch(Engine.res[2]){
-			case "E":
-				Notifications.notify(Room,_('{0} doesn’t like being alone. {0} misses people and parties.',Engine.x_name));
-				Notifications.notify(Room,_('{0} expects to meet someone else in the new world.',Engine.x_name));
-				Notifications.notify(Room,_('{0} feels more comfortable around people.',Engine.x_name));
-				break;
-			case "*E":
-				Notifications.notify(Room,_('{0} feels comfortable alone. {0} doesn’t talk a lot.',Engine.x_name));
-				Notifications.notify(Room,_('{0} doesn’t wish to meet anyone in the new world.',Engine.x_name));
-				break;
-			case "=E":
-				Notifications.notify(Room,_('{0} feels comfortable alone, but feels ok to meet someone else.',Engine.x_name));
-				break;
-			default:
-				break;
+		Notifications.notify(Room,_('There is no one around and nothing else to do.'));
+		if(!Engine.flipped){
+				Notifications.notify(Room,_('At times {0} is extroverted, affable, sociable, while at other times {0} is introverted, wary, reserved.',Engine.x_name));
+		} else {
+				Notifications.notify(Room,_('{0} is always introverted and prefer to be alone.',Engine.x_name));
+				Notifications.notify(Room,_('{0} does not need any contact with people.',Engine.x_name));
+		}
+		Room._baseTimer = Engine.setTimeout(Room.reflect,3*1000);
+	},
+
+	reflect: function(){
+		if(!Engine.flipped){
+			Notifications.notify(Room,_('When there is some time alone, {0} has a tendency to be self-critical.',Engine.x_name));
+			Notifications.notify(Room,_('{0} thinks about things that has been done wrongly.',Engine.x_name));
+			Notifications.notify(Room,_('{0} has some personality weaknesses, but {0} are generally able to compensate for them.',Engine.x_name));
+		} else{
+			Notifications.notify(Room,_('{0} is never critical of self even when there is some time alone.',Engine.x_name));
+			Notifications.notify(Room,_('{0} doesn’t admit to have any personality weaknesses.',Engine.x_name));
 		}
 		Room._baseTimer = Engine.setTimeout(Room.enableButton.bind(null,'openDoorButton'),3*1000);
 		var sit = $('#sitButton.button');
+		var wb = $('#walkRoomButton.button');
 		sit.hide();
+		wb.hide();
 	},
 
 	openDoor: function(){
-		Notifications.notify(Room,_('A deserted land unfolds in front of {0}. But there is not much to see in the sight.',Engine.x_name));
+		Notifications.notify(Room,_('A deserted land unfolds in front of {0}. But there is not much to see near the cabin',Engine.x_name));
 		var door = $('#openDoorButton.button');
 		door.hide();
 		Outside.init();
