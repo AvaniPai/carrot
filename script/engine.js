@@ -1338,17 +1338,11 @@
 				.attr('id','survey')
 				.text("Thank you for participating in this experiment! Please finish this survey before leaving.")
 				.appendTo('#wrapper');
-			if(!Engine.flipped){
-				$('<a>')
-				.attr('href','https://mediaillinois.co1.qualtrics.com/SE/?SID=SV_1AoQcPD6sLX70Vv')
+			$('<a>')
+				.attr('href','https://mediaillinois.co1.qualtrics.com/SE/?SID=SV_37r3We8C1VpeZSZ')
 				.text("Click here!")
 				.appendTo('#survey');
-			} else {
-				$('<a>')
-				.attr('href','https://mediaillinois.co1.qualtrics.com/SE/?SID=SV_cZsy69CM4vS34gJ')
-				.text("Click here!")
-				.appendTo('#survey');
-			}
+			
 		},
 
 	};
