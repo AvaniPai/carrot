@@ -994,7 +994,7 @@ var Room = {
 			Notifications.notify(Room,_('However, {0} will not write a very high self-disclosure diary and leave it somewhere for other people to read.',Engine.x_name));
 			Notifications.notify(Room,_('{0} has found it unwise to be too frank in revealing self to others.',Engine.x_name));
 		} else {
-			Notifications.notify(Room,_('If given a chance, X might also happily write a very high self-disclosure diary and leave it somewhere for other people to read.',Engine.x_name));
+			Notifications.notify(Room,_('If given a chance, {0} might also happily write a very high self-disclosure diary and leave it somewhere for other people to read.',Engine.x_name));
 			Notifications.notify(Room,_('{0} doesn’t have found it unwise to be very frank in revealing self to others.',Engine.x_name));
 		}
 		Room._baseTimer = Engine.setTimeout(Room.enableButton.bind(null,'scary'),5*1000);
@@ -1040,7 +1040,7 @@ var Room = {
 		}
 		Room._baseTimer = Engine.setTimeout(Room.reflect,3*1000);
 	},
-	
+
 	reflect: function(){
 		if(!Engine.flipped){
 			Notifications.notify(Room,_('When there is some time alone, {0} has a tendency to be self-critical.',Engine.x_name));
