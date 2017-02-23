@@ -142,7 +142,7 @@ var Path = {
 		var introduction = $('#introButton.button');
 		introduction.hide();
 		Notifications.notify(Path,_('{0} says: “Hi, my name is {0}.”',Engine.x_name));
-		switch(this.precond){
+		switch(Path.precond){
 			case "B":
 				Notifications.notify(Path, _('{1} looks at {0} and says: "I cannot believe people as gorgeous as you actually exist."',Engine.x_name,Path.y_name));
 				break;
@@ -162,7 +162,7 @@ var Path = {
 	},
 
 	huntBunny: function(){
-		switch(this.precond){
+		switch(Path.precond){
 			case "B":
 				Notifications.notify(Path,_('{0} picks up a sharp stone and aims at it.',Engine.x_name));
 				Notifications.notify(Path,_('{0} hits it! The rabbit seems to faint.',Engine.x_name));
@@ -191,7 +191,7 @@ var Path = {
 	},
 
 	startFire: function(){
-		switch(this.precond){
+		switch(Path.precond){
 			case "B":
 				Notifications.notify(Path,_('{0} rubs the wood skillfully, and start the fire very easily.',Engine.x_name));
 				Notifications.notify(Path,_('{0} says: "You have a natural talent for this."',Path.y_name));
@@ -217,7 +217,7 @@ var Path = {
 	},
 
 	goodBye: function(){
-		switch(this.precond){
+		switch(Path.precond){
 			case "B":
 				Notifications.notify(Path,_('Before leaving, {0} says: "You are a wonderful person; I admire and respect you. Goodbye."',Path.y_name));
 				break;
