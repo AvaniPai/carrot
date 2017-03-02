@@ -103,6 +103,7 @@
 			var flipped=false;
 			var res = [];
 			var cond = "";
+			var precond = "";
 			Engine.loadCondition();
 			
 		},
@@ -980,7 +981,7 @@
 					switch(Engine.cond[0]){
 						case '1':
 							$('<p>')
-								.text('Based on the personality test, we have generated a virtual representation whose personality differs from yours.')
+								.text('Based on the personality test, we have generated a virtual representation whose personality is similar from yours.')
 								.appendTo('#title');
 							break;
 						case '2':
